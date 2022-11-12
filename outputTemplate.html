@@ -637,6 +637,7 @@
     $('#espnHighSort').on('click', function () {
       divArr = $(".matchup-card-col")
       divArr.sort(function (a, b) {
+        if ($(a).find(".espn-home-win-chance").text().replace("%", "") == "0.0") return 1 // dataless entries at bottom
         var aWinChance = Math.abs(Number($(a).find(".espn-home-win-chance").text().replace("%", "")) - 50);
         var bWinChance = Math.abs(Number($(b).find(".espn-home-win-chance").text().replace("%", "")) - 50);
         return aWinChance < bWinChance ? 1 : -1;

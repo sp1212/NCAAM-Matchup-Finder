@@ -25,18 +25,15 @@ import javax.swing.JPanel;
 
 import org.apache.commons.io.FileUtils;
 
-public class HTMLFormat
-{
-	public static void generateMatchupsHtml(ArrayList<CBBMatchup> cbbMatchups)
-	{
+public class HTMLFormat {
+	public static void generateMatchupsHtml(ArrayList<CBBMatchup> cbbMatchups) {
 		DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("h:mm a");
 		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("LLL d, u");
 		int numMatchups = cbbMatchups.size();
 		LocalTime currentTime = LocalTime.now();
 		LocalDate currentDate = LocalDate.now();
 
-		try
-		{
+		try {
 			File htmlTemplateFile = new File("outputTemplate.html");
 			String htmlString = FileUtils.readFileToString(htmlTemplateFile, StandardCharsets.UTF_8);
 			htmlString = htmlString.replace("$numMatchups", Integer.toString(numMatchups));
@@ -51,8 +48,7 @@ public class HTMLFormat
 
 			htmlString = topHtml;
 
-			for (CBBMatchup matchup : cbbMatchups)
-			{
+			for (CBBMatchup matchup : cbbMatchups) {
 				String matchupCard = middleHtml;
 				matchupCard = matchupCard.replace("$awayTeamAbbr", matchup.coversMatchup.awayTeam);
 				matchupCard = matchupCard.replace("$homeTeamAbbr", matchup.coversMatchup.homeTeam);
@@ -79,8 +75,7 @@ public class HTMLFormat
 				matchupCard = matchupCard.replace("$matchupUrlIndex", matchup.coversMatchupUrlIndex);
 				matchupCard = matchupCard.replace("$espnMatchupUrl", matchup.espnMatchup.matchupUrl);
 
-				if (matchup.oddsSharkLikesOver == true)
-				{
+				if (matchup.oddsSharkLikesOver == true) {
 					matchupCard = matchupCard.replace(" $oddsSharkUnderAnimated", "");
 					matchupCard = matchupCard.replace("$oddsSharkOverAnimated",
 							"progress-bar-striped progress-bar-animated");
@@ -90,8 +85,7 @@ public class HTMLFormat
 					matchupCard = matchupCard.replace("$oddsSharkOverLabel",
 							"Over by " + matchup.oddsSharkOverUnderMargin);
 				}
-				else if (matchup.oddsSharkLikesUnder == true)
-				{
+				else if (matchup.oddsSharkLikesUnder == true) {
 					matchupCard = matchupCard.replace("$oddsSharkUnderAnimated",
 							"progress-bar-striped progress-bar-animated");
 					matchupCard = matchupCard.replace(" $oddsSharkOverAnimated", "");
@@ -101,8 +95,7 @@ public class HTMLFormat
 							"Under by " + matchup.oddsSharkOverUnderMargin);
 					matchupCard = matchupCard.replace("$oddsSharkOverLabel", "");
 				}
-				else
-				{
+				else {
 					matchupCard = matchupCard.replace(" $oddsSharkUnderAnimated", "");
 					matchupCard = matchupCard.replace(" $oddsSharkOverAnimated", "");
 					matchupCard = matchupCard.replace("$oddsSharkUnderWidth", "0");
@@ -111,8 +104,7 @@ public class HTMLFormat
 					matchupCard = matchupCard.replace("$oddsSharkOverLabel", "");
 				}
 
-				if (matchup.cbsPickedOver == true)
-				{
+				if (matchup.cbsPickedOver == true) {
 					matchupCard = matchupCard.replace(" $cbsUnderAnimated", "");
 					matchupCard = matchupCard.replace("$cbsOverAnimated", "progress-bar-striped progress-bar-animated");
 					matchupCard = matchupCard.replace("$cbsUnderWidth", "0");
@@ -120,8 +112,7 @@ public class HTMLFormat
 					matchupCard = matchupCard.replace("$cbsUnderLabel", "");
 					matchupCard = matchupCard.replace("$cbsOverLabel", "CBS Picked");
 				}
-				else if (matchup.cbsPickedUnder == true)
-				{
+				else if (matchup.cbsPickedUnder == true) {
 					matchupCard = matchupCard.replace("$cbsUnderAnimated",
 							"progress-bar-striped progress-bar-animated");
 					matchupCard = matchupCard.replace(" $cbsOverAnimated", "");
@@ -130,8 +121,7 @@ public class HTMLFormat
 					matchupCard = matchupCard.replace("$cbsUnderLabel", "CBS Picked");
 					matchupCard = matchupCard.replace("$cbsOverLabel", "");
 				}
-				else
-				{
+				else {
 					matchupCard = matchupCard.replace(" $cbsUnderAnimated", "");
 					matchupCard = matchupCard.replace(" $cbsOverAnimated", "");
 					matchupCard = matchupCard.replace("$cbsUnderWidth", "0");
@@ -140,98 +130,80 @@ public class HTMLFormat
 					matchupCard = matchupCard.replace("$cbsOverLabel", "");
 				}
 
-				if (matchup.overConsensus > matchup.underConsensus)
-				{
+				if (matchup.overConsensus > matchup.underConsensus) {
 					matchupCard = matchupCard.replace("$coversOverAnimated",
 							"progress-bar-striped progress-bar-animated");
 					matchupCard = matchupCard.replace(" $coversUnderAnimated", "");
 				}
-				else if (matchup.underConsensus > matchup.overConsensus)
-				{
+				else if (matchup.underConsensus > matchup.overConsensus) {
 					matchupCard = matchupCard.replace("$coversUnderAnimated",
 							"progress-bar-striped progress-bar-animated");
 					matchupCard = matchupCard.replace(" $coversOverAnimated", "");
 				}
-				else
-				{
+				else {
 					matchupCard = matchupCard.replace(" $coversOverAnimated", "");
 					matchupCard = matchupCard.replace(" $coversUnderAnimated", "");
 				}
 
-				if (matchup.oddsSharkAwayCoverBy > 0)
-				{
+				if (matchup.oddsSharkAwayCoverBy > 0) {
 					matchupCard = matchupCard.replace("$oddsSharkAwayCoverWidth", "100");
 					matchupCard = matchupCard.replace("$oddsSharkHomeCoverWidth", "0");
 				}
-				else if (matchup.oddsSharkHomeCoverBy > 0)
-				{
+				else if (matchup.oddsSharkHomeCoverBy > 0) {
 					matchupCard = matchupCard.replace("$oddsSharkAwayCoverWidth", "0");
 					matchupCard = matchupCard.replace("$oddsSharkHomeCoverWidth", "100");
 				}
-				else
-				{
+				else {
 					matchupCard = matchupCard.replace("$oddsSharkAwayCoverWidth", "0");
 					matchupCard = matchupCard.replace("$oddsSharkHomeCoverWidth", "0");
 				}
 
-				if (matchup.cbsPickedAwayTeam == true)
-				{
+				if (matchup.cbsPickedAwayTeam == true) {
 					matchupCard = matchupCard.replace("$cbsAwayPickWidth", "100");
 					matchupCard = matchupCard.replace("$cbsHomePickWidth", "0");
 				}
-				else if (matchup.cbsPickedHomeTeam == true)
-				{
+				else if (matchup.cbsPickedHomeTeam == true) {
 					matchupCard = matchupCard.replace("$cbsAwayPickWidth", "0");
 					matchupCard = matchupCard.replace("$cbsHomePickWidth", "100");
 				}
-				else
-				{
+				else {
 					matchupCard = matchupCard.replace("$cbsAwayPickWidth", "0");
 					matchupCard = matchupCard.replace("$cbsHomePickWidth", "0");
 				}
 
-				if (matchup.homeConsensus >= 65)
-				{
+				if (matchup.homeConsensus >= 65) {
 					matchupCard = matchupCard.replace("$homeCovBarAnimated",
 							" progress-bar-striped progress-bar-animated");
 					matchupCard = matchupCard.replace("$awayCovBarAnimated", "");
 				}
-				else if (matchup.awayConsensus >= 65)
-				{
+				else if (matchup.awayConsensus >= 65) {
 					matchupCard = matchupCard.replace("$awayCovBarAnimated",
 							" progress-bar-striped progress-bar-animated");
 					matchupCard = matchupCard.replace("$homeCovBarAnimated", "");
 				}
-				else
-				{
+				else {
 					matchupCard = matchupCard.replace("$awayCovBarAnimated", "");
 					matchupCard = matchupCard.replace("$homeCovBarAnimated", "");
 				}
 
-				if (matchup.awaySpread > 0)
-				{
+				if (matchup.awaySpread > 0) {
 					matchupCard = matchupCard.replace("$awaySpread", "+" + Double.toString(matchup.awaySpread));
 				}
-				else
-				{
+				else {
 					matchupCard = matchupCard.replace("$awaySpread", Double.toString(matchup.awaySpread));
 				}
 
-				if (matchup.homeSpread > 0)
-				{
+				if (matchup.homeSpread > 0) {
 					matchupCard = matchupCard.replace("$homeSpread", "+" + Double.toString(matchup.homeSpread));
 				}
-				else
-				{
+				else {
 					matchupCard = matchupCard.replace("$homeSpread", Double.toString(matchup.homeSpread));
 				}
 
-				if (matchup.isNeutralSite == true)
-				{
+				if (matchup.isNeutralSite == true) {
 					matchupCard = matchupCard.replace("$atVs", "vs.");
 				}
-				else
-				{
+				else {
 					matchupCard = matchupCard.replace("$atVs", "at");
 				}
 				htmlString += matchupCard;
@@ -247,29 +219,23 @@ public class HTMLFormat
 			URI fileUri = newHtmlFile.toURI();
 			System.out.println(fileUri);
 
-			class OpenListener implements ActionListener
-			{
-				public void actionPerformed(ActionEvent event)
-				{
+			class OpenListener implements ActionListener {
+				public void actionPerformed(ActionEvent event) {
 					System.out.println("Opening file. . .");
 					Desktop desktop = Desktop.getDesktop();
-					try
-					{
+					try {
 						desktop.browse(fileUri);
 						System.exit(0);
 					}
-					catch (IOException e)
-					{
+					catch (IOException e) {
 						System.out.println("Error opening file.");
 						e.printStackTrace();
 					}
 				}
 			}
-			
-			class CloseListener implements ActionListener
-			{
-				public void actionPerformed(ActionEvent event)
-				{
+
+			class CloseListener implements ActionListener {
+				public void actionPerformed(ActionEvent event) {
 					System.out.println("Closing window. . .");
 					System.exit(0);
 				}
@@ -286,15 +252,15 @@ public class HTMLFormat
 			panel.setBorder(BorderFactory.createEmptyBorder(12, 12, 12, 12));
 			panel.setOpaque(true);
 			panel.setBackground(Color.LIGHT_GRAY);
-			
+
 			JLabel label = new JLabel();
 			label.setText("Completed.  Found " + numMatchups + " matchups.");
 			label.setFont(new Font("SansSerif", Font.PLAIN, 18));
 			label.setHorizontalAlignment(JLabel.CENTER);
 			panel.add(label, BorderLayout.PAGE_START);
-			
+
 			JButton viewButton = new JButton("View Matchups");
-			viewButton.setPreferredSize(new Dimension(160,40));
+			viewButton.setPreferredSize(new Dimension(160, 40));
 			viewButton.setFont(new Font("SansSerif", Font.PLAIN, 14));
 			viewButton.setFocusPainted(false);
 			viewButton.setContentAreaFilled(false);
@@ -302,14 +268,14 @@ public class HTMLFormat
 			viewButton.setBackground(Color.WHITE);
 			panel.add(viewButton, BorderLayout.LINE_START);
 			JButton okButton = new JButton("OK");
-			okButton.setPreferredSize(new Dimension(160,40));
+			okButton.setPreferredSize(new Dimension(160, 40));
 			okButton.setFont(new Font("SansSerif", Font.PLAIN, 14));
 			okButton.setFocusPainted(false);
 			okButton.setContentAreaFilled(false);
 			okButton.setOpaque(true);
 			okButton.setBackground(Color.WHITE);
 			panel.add(okButton, BorderLayout.LINE_END);
-			
+
 			frame.add(panel);
 
 			viewButton.addActionListener(new OpenListener());
@@ -321,17 +287,17 @@ public class HTMLFormat
 			frame.setResizable(false);
 			frame.setAlwaysOnTop(true);
 			frame.setTitle("NCAAM Matchups");
-			
-			URL frameIconUrl = new URL("https://files.softicons.com/download/sport-icons/sports-icons-by-martin-berube/png/16x16/Basketball.png");
+
+			URL frameIconUrl = new URL(
+					"https://files.softicons.com/download/sport-icons/sports-icons-by-martin-berube/png/16x16/Basketball.png");
 			BufferedImage frameIcon = ImageIO.read(frameIconUrl);
 			frame.setIconImage(frameIcon);
-			
+
 			frame.setVisible(true);
 
 			return;
 		}
-		catch (IOException e)
-		{
+		catch (IOException e) {
 			System.out.println("Exception occurred when writing to HTML.");
 		}
 	}

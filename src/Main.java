@@ -6,28 +6,23 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-public class Main
-{
-	public static void main(String[] args)
-	{
-		try
-		{
+public class Main {
+	public static void main(String[] args) {
+		try {
 			LocalDate matchupDate = LocalDate.now().plusDays(0);
 			System.out.println(matchupDate + "\n");
-			
+
 			ArrayList<CBBMatchup> cbbMatchups = CBBMatchup.getCBBMatchups(matchupDate);
 			int numMatchups = cbbMatchups.size();
 			LocalTime currentTime = LocalTime.now();
-		
+
 			System.out.println(numMatchups + " matchup(s) found @ " + currentTime);
-			//System.out.println(cbbMatchups);
+			// System.out.println(cbbMatchups);
 			System.out.println();
-			
 
 			HTMLFormat.generateMatchupsHtml(cbbMatchups);
 		}
-		catch (Exception | Error e)
-		{
+		catch (Exception | Error e) {
 			StringWriter sw = new StringWriter();
 			PrintWriter pw = new PrintWriter(sw);
 			e.printStackTrace(pw);
