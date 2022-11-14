@@ -34,7 +34,7 @@ public class GetTeamNames {
 		// System.out.println(oddsSharkTeams.size() + " Teams from Odds Shark");
 		Collections.sort(oddsSharkTeams); // System.out.println(oddsSharkTeams);
 
-		for (int i = 0; i < 358; i++) {
+		for (int i = 0; i < 363; i++) {
 			System.out.println(coversTeams.get(i) + ",," + cbsTeams.get(i) + ",," + oddsSharkTeams.get(i) + ",,"
 					+ ESPNTeams.get(i));
 		}
@@ -48,8 +48,8 @@ public class GetTeamNames {
 	}
 
 	public static ArrayList<ArrayList<String>> getSrTeams() {
-		ArrayList<String> srFullTeamNames = new ArrayList<String>(358);
-		ArrayList<String> srUrlTeamNames = new ArrayList<String>(358);
+		ArrayList<String> srFullTeamNames = new ArrayList<String>(363);
+		ArrayList<String> srUrlTeamNames = new ArrayList<String>(363);
 
 		String url = "https://www.sports-reference.com/cbb/schools/";
 		try {
