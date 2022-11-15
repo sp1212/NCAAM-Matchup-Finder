@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 public class Main {
 	public static void main(String[] args) {
 		try {
+			long startTime = System.currentTimeMillis();
 			LocalDate matchupDate = LocalDate.now().plusDays(0);
 			System.out.println(matchupDate + "\n");
 
@@ -21,6 +22,8 @@ public class Main {
 			System.out.println();
 
 			HTMLFormat.generateMatchupsHtml(cbbMatchups);
+			
+			System.out.println("\nTook " + ((System.currentTimeMillis() - startTime) / 1000F) + " seconds");
 		}
 		catch (Exception | Error e) {
 			StringWriter sw = new StringWriter();

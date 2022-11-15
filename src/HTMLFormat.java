@@ -36,7 +36,11 @@ public class HTMLFormat {
 		try {
 			File htmlTemplateFile = new File("outputTemplate.html");
 			String htmlString = FileUtils.readFileToString(htmlTemplateFile, StandardCharsets.UTF_8);
-			htmlString = htmlString.replace("$numMatchups", Integer.toString(numMatchups));
+			if (numMatchups == 1) {
+				htmlString = htmlString.replace("$numMatchups", Integer.toString(numMatchups) + " matchup");
+			} else {
+				htmlString = htmlString.replace("$numMatchups", Integer.toString(numMatchups) + " matchups");
+			}
 			htmlString = htmlString.replace("$currentDate", dateFormat.format(currentDate));
 			htmlString = htmlString.replace("$currentTime", timeFormat.format(currentTime));
 
@@ -201,10 +205,12 @@ public class HTMLFormat {
 				}
 
 				if (matchup.isNeutralSite == true) {
-					matchupCard = matchupCard.replace("$atVs", "vs.");
+					matchupCard = matchupCard.replace("$atVs", "NEUTRAL");
+					matchupCard = matchupCard.replace("$neutralColor", "#FFFFE0");
 				}
 				else {
 					matchupCard = matchupCard.replace("$atVs", "at");
+					matchupCard = matchupCard.replace("$neutralColor", "#FFFFFF");
 				}
 				htmlString += matchupCard;
 			}
