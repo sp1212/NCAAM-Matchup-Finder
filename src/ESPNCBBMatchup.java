@@ -61,6 +61,7 @@ public class ESPNCBBMatchup {
 				System.out.println(doc.title() + "\n");
 
 				Elements games = doc.select("a[href*=/mens-college-basketball/game]");
+				System.out.println("Size of games selected:  " + games.size());
 				for (Element game : games) {
 					try {
 						String matchupUrl = "https://www.espn.com" + game.attr("href");
@@ -69,40 +70,33 @@ public class ESPNCBBMatchup {
 
 						ESPNCBBMatchup espnMatchup = new ESPNCBBMatchup();
 						espnMatchup.matchupUrl = matchupUrl;
-						espnMatchup.awayTeam = docESPNMatchup.select("span.long-name").get(0).text() + " "
-								+ docESPNMatchup.select("span.short-name").get(0).text();
-						espnMatchup.homeTeam = docESPNMatchup.select("span.long-name").get(1).text() + " "
-								+ docESPNMatchup.select("span.short-name").get(1).text();
+						espnMatchup.awayTeam = docESPNMatchup.select("div.ScoreCell__TeamName").get(0).text();
+						espnMatchup.homeTeam = docESPNMatchup.select("div.ScoreCell__TeamName").get(1).text();
 
 						System.out.println(espnMatchup.awayTeam + " vs. " + espnMatchup.homeTeam);
 
-						if (docESPNMatchup.select("span.value-home").hasText() != false) {
-							espnMatchup.awayWinPercentage = Double
-									.parseDouble(docESPNMatchup.select("span.value-away").text().replaceAll("%", ""));
-							espnMatchup.homeWinPercentage = Double
-									.parseDouble(docESPNMatchup.select("span.value-home").text().replaceAll("%", ""));
+						if (docESPNMatchup.select("div.matchupPredictor__innerContent").hasText() != false) {
+							espnMatchup.awayWinPercentage = Double.parseDouble(docESPNMatchup
+									.select("div.matchupPredictor__teamValue").get(0).text().replaceAll("%", ""));
+							espnMatchup.homeWinPercentage = Double.parseDouble(docESPNMatchup
+									.select("div.matchupPredictor__teamValue").get(1).text().replaceAll("%", ""));
 
-							String awayRawColor = docESPNMatchup.select("div.wedge").get(1).attr("style");
-							String awayHexColor = awayRawColor.substring(awayRawColor.indexOf("#")).replaceAll("[;#]",
-									"");
+							espnMatchup.awayHexColor = docESPNMatchup
+									.select("div.matchupPredictor__wrap > div > svg > g > path").get(1).attr("stroke")
+									.replaceAll("#", "");
 
-							String homeRawColor = docESPNMatchup.select("div.wedge").get(0).attr("style");
-							String homeHexColor = homeRawColor.substring(homeRawColor.indexOf("#")).replaceAll("[;#]",
-									"");
-
-							espnMatchup.awayHexColor = awayHexColor;
-							espnMatchup.homeHexColor = homeHexColor;
+							espnMatchup.homeHexColor = docESPNMatchup
+									.select("div.matchupPredictor__wrap > div > svg > g > path").get(0).attr("stroke")
+									.replaceAll("#", "");
 						}
 						espnMatchups.add(espnMatchup);
-					}
-					catch (IOException e) {
+					} catch (IOException e) {
 						System.out.println("IOException in try/catch block!");
 					}
 
 				}
 			}
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			System.out.println("IOException in try/catch block!");
 		}
 
