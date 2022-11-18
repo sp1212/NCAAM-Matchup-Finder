@@ -19,6 +19,9 @@ public class ESPNCBBMatchup {
 	public String awayHexColor;
 	public String homeHexColor;
 
+	public int awayRank;
+	public int homeRank;
+
 	public String matchupUrl;
 
 	public ESPNCBBMatchup() {
@@ -28,6 +31,8 @@ public class ESPNCBBMatchup {
 		this.homeWinPercentage = 0;
 		this.awayHexColor = "000000";
 		this.homeHexColor = "000000";
+		this.awayRank = -1;
+		this.homeRank = -1;
 		this.matchupUrl = "#";
 	}
 
@@ -40,7 +45,8 @@ public class ESPNCBBMatchup {
 	}
 
 	public String toString() {
-		return "\n" + awayTeam + " " + awayWinPercentage + "% <--> " + homeTeam + " " + homeWinPercentage + "%";
+		return "\n" + "(R" + awayRank + ")" + awayTeam + " " + awayWinPercentage + "% <--> " + "(R" + homeRank + ")"
+				+ homeTeam + " " + homeWinPercentage + "%";
 	}
 
 	// gets all CBB matchups from ESPN
@@ -73,9 +79,7 @@ public class ESPNCBBMatchup {
 						espnMatchup.awayTeam = docESPNMatchup.select("div.ScoreCell__TeamName").get(0).text();
 						espnMatchup.homeTeam = docESPNMatchup.select("div.ScoreCell__TeamName").get(1).text();
 
-						System.out.println(espnMatchup.awayTeam + " vs. " + espnMatchup.homeTeam);
-
-						if (docESPNMatchup.select("div.matchupPredictor__innerContent").hasText() != false) {
+						if (docESPNMatchup.select("div.matchupPredictor__innerContent").hasText()) {
 							espnMatchup.awayWinPercentage = Double.parseDouble(docESPNMatchup
 									.select("div.matchupPredictor__teamValue").get(0).text().replaceAll("%", ""));
 							espnMatchup.homeWinPercentage = Double.parseDouble(docESPNMatchup
@@ -89,6 +93,24 @@ public class ESPNCBBMatchup {
 									.select("div.matchupPredictor__wrap > div > svg > g > path").get(0).attr("stroke")
 									.replaceAll("#", "");
 						}
+
+						if (docESPNMatchup
+								.select("div.Gamestrip__Team--away > div > div > div > div > div.ScoreCell__Rank")
+								.hasText()) {
+							espnMatchup.awayRank = Integer.parseInt(docESPNMatchup
+									.select("div.Gamestrip__Team--away > div > div > div > div > div.ScoreCell__Rank")
+									.text());
+						}
+						if (docESPNMatchup
+								.select("div.Gamestrip__Team--home > div > div > div > div > div.ScoreCell__Rank")
+								.hasText()) {
+							espnMatchup.homeRank = Integer.parseInt(docESPNMatchup
+									.select("div.Gamestrip__Team--home > div > div > div > div > div.ScoreCell__Rank")
+									.text());
+						}
+						
+						System.out.println(espnMatchup.awayTeam + " vs. " + espnMatchup.homeTeam);
+
 						espnMatchups.add(espnMatchup);
 					} catch (IOException e) {
 						System.out.println("IOException in try/catch block!");

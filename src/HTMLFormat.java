@@ -212,6 +212,20 @@ public class HTMLFormat {
 					matchupCard = matchupCard.replace("$atVs", "at");
 					matchupCard = matchupCard.replace("$neutralColor", "#FFFFFF");
 				}
+				
+				if (matchup.awayRank > 0) {
+					matchupCard = matchupCard.replace("$awayRank", "<small>" + matchup.awayRank + " </small>");
+				}
+				else {
+					matchupCard = matchupCard.replace("$awayRank", "");
+				}
+				if (matchup.homeRank > 0) {
+					matchupCard = matchupCard.replace("$homeRank", "<small>" + matchup.homeRank + " </small>");
+				}
+				else {
+					matchupCard = matchupCard.replace("$homeRank", "");
+				}
+				
 				htmlString += matchupCard;
 			}
 

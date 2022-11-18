@@ -17,9 +17,8 @@ public class Main {
 			int numMatchups = cbbMatchups.size();
 			LocalTime currentTime = LocalTime.now();
 
-			System.out.println(numMatchups + " matchup(s) found @ " + currentTime);
-			// System.out.println(cbbMatchups);
-			System.out.println();
+			System.out.println(cbbMatchups + "\n");
+			System.out.println(numMatchups + " matchup(s) found @ " + currentTime + "\n");
 
 			HTMLFormat.generateMatchupsHtml(cbbMatchups);
 			

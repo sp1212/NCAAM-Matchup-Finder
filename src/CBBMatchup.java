@@ -21,6 +21,8 @@ public class CBBMatchup {
 
 	public double awayWinChance;
 	public double homeWinChance;
+	public int awayRank;
+	public int homeRank;
 
 	public boolean cbsPickedAwayTeam;
 	public boolean cbsPickedHomeTeam;
@@ -57,19 +59,19 @@ public class CBBMatchup {
 
 	public String toString() {
 		return "awayTeam " + awayTeam + "\n" + "homeTeam " + homeTeam + "\n" + "espnAwayTeam " + espnMatchup.awayTeam
-				+ "\n" + "espnHomeTeam " + espnMatchup.homeTeam + "\n" + "isNeutralSite " + isNeutralSite + "\n"
-				+ "awayConsensus " + awayConsensus + "\n" + "homeConsensus " + homeConsensus + "\n" + "awaySpread "
-				+ awaySpread + "\n" + "homeSpread " + homeSpread + "\n" + "overUnder " + overUnder + "\n"
-				+ "overConsensus " + overConsensus + "\n" + "underConsensus " + underConsensus + "\n" + "awayWinChance "
-				+ awayWinChance + "\n" + "homeWinChance " + homeWinChance + "\n" + "cbsPickedAwayTeam "
-				+ cbsPickedAwayTeam + "\n" + "cbsPickedHomeTeam " + cbsPickedHomeTeam + "\n" + "cbsPickedOver "
-				+ cbsPickedOver + "\n" + "cbsPickedUnder " + cbsPickedUnder + "\n" + "oddsSharkAwayScore "
-				+ oddsSharkAwayScore + "\n" + "oddsSharkHomeScore " + oddsSharkHomeScore + "\n"
-				+ "oddsSharkAwayCoverBy " + oddsSharkAwayCoverBy + "\n" + "oddsSharkHomeCoverBy " + oddsSharkHomeCoverBy
-				+ "\n" + "oddsSharkTotalScore " + oddsSharkTotalScore + "\n" + "oddsSharkLikesOver "
-				+ oddsSharkLikesOver + "\n" + "oddsSharkLikesUnder " + oddsSharkLikesUnder + "\n"
-				+ "oddsSharkOverUnderMargin " + oddsSharkOverUnderMargin + "\n" + "coversMatchupUrlIndex "
-				+ coversMatchupUrlIndex + "\n" + "gameTime " + gameTime + "\n" + "\n";
+				+ "\n" + "espnHomeTeam " + espnMatchup.homeTeam + "\n" + "awayRank " + awayRank + "\n"
+				+ "homeRank " + homeRank + "\n" + "isNeutralSite " + isNeutralSite + "\n" + "awayConsensus " + awayConsensus
+				+ "\n" + "homeConsensus " + homeConsensus + "\n" + "awaySpread " + awaySpread + "\n" + "homeSpread "
+				+ homeSpread + "\n" + "overUnder " + overUnder + "\n" + "overConsensus " + overConsensus + "\n"
+				+ "underConsensus " + underConsensus + "\n" + "awayWinChance " + awayWinChance + "\n" + "homeWinChance "
+				+ homeWinChance + "\n" + "cbsPickedAwayTeam " + cbsPickedAwayTeam + "\n" + "cbsPickedHomeTeam "
+				+ cbsPickedHomeTeam + "\n" + "cbsPickedOver " + cbsPickedOver + "\n" + "cbsPickedUnder "
+				+ cbsPickedUnder + "\n" + "oddsSharkAwayScore " + oddsSharkAwayScore + "\n" + "oddsSharkHomeScore "
+				+ oddsSharkHomeScore + "\n" + "oddsSharkAwayCoverBy " + oddsSharkAwayCoverBy + "\n"
+				+ "oddsSharkHomeCoverBy " + oddsSharkHomeCoverBy + "\n" + "oddsSharkTotalScore " + oddsSharkTotalScore
+				+ "\n" + "oddsSharkLikesOver " + oddsSharkLikesOver + "\n" + "oddsSharkLikesUnder "
+				+ oddsSharkLikesUnder + "\n" + "oddsSharkOverUnderMargin " + oddsSharkOverUnderMargin + "\n"
+				+ "coversMatchupUrlIndex " + coversMatchupUrlIndex + "\n" + "gameTime " + gameTime + "\n" + "\n";
 	}
 
 	// gathers and outputs matchup objects from scratch
@@ -117,8 +119,6 @@ public class CBBMatchup {
 			matchup.awayTeamIndex = coversTeams.indexOf(matchup.awayTeam);
 			matchup.homeTeamIndex = coversTeams.indexOf(matchup.homeTeam);
 
-			System.out.println(matchup);
-
 			String cbsAwayTeam = cbsTeams.get(matchup.awayTeamIndex);
 			String cbsHomeTeam = cbsTeams.get(matchup.homeTeamIndex);
 			String oddsSharkAwayTeam = oddsSharkTeams.get(matchup.awayTeamIndex);
@@ -133,16 +133,16 @@ public class CBBMatchup {
 					matchup.espnMatchup = temp;
 					matchup.awayWinChance = temp.awayWinPercentage;
 					matchup.homeWinChance = temp.homeWinPercentage;
+					matchup.awayRank = temp.awayRank;
+					matchup.homeRank = temp.homeRank;
 					if (temp.awayHexColor.length() < 6) {
 						matchup.awayHexColor = "#000000";
-					}
-					else {
+					} else {
 						matchup.awayHexColor = temp.awayHexColor;
 					}
 					if (temp.homeHexColor.length() < 6) {
 						matchup.homeHexColor = "#000000";
-					}
-					else {
+					} else {
 						matchup.homeHexColor = temp.homeHexColor;
 					}
 					espnCBBMatchups.remove(i);
@@ -153,16 +153,16 @@ public class CBBMatchup {
 					matchup.espnMatchup = temp;
 					matchup.awayWinChance = temp.homeWinPercentage;
 					matchup.homeWinChance = temp.awayWinPercentage;
+					matchup.awayRank = temp.homeRank;
+					matchup.homeRank = temp.awayRank;
 					if (temp.awayHexColor.length() < 6) {
 						matchup.homeHexColor = "#000000";
-					}
-					else {
+					} else {
 						matchup.homeHexColor = temp.awayHexColor;
 					}
 					if (temp.homeHexColor.length() < 6) {
 						matchup.awayHexColor = "#000000";
-					}
-					else {
+					} else {
 						matchup.awayHexColor = temp.homeHexColor;
 					}
 					espnCBBMatchups.remove(i);
@@ -177,26 +177,21 @@ public class CBBMatchup {
 					matchup.cbsPickedAwayTeam = true;
 					if (temp.overUnderPick.compareTo("OVER") == 0) {
 						matchup.cbsPickedOver = true;
-					}
-					else if (temp.overUnderPick.compareTo("UNDER") == 0) {
+					} else if (temp.overUnderPick.compareTo("UNDER") == 0) {
 						matchup.cbsPickedUnder = true;
-					}
-					else {
+					} else {
 						matchup.cbsPickedOver = false;
 						matchup.cbsPickedUnder = false;
 					}
 					cbsCBBMatchups.remove(i);
 					break;
-				}
-				else if (cbsHomeTeam.compareTo(temp.teamPick) == 0) {
+				} else if (cbsHomeTeam.compareTo(temp.teamPick) == 0) {
 					matchup.cbsPickedHomeTeam = true;
 					if (temp.overUnderPick.compareTo("OVER") == 0) {
 						matchup.cbsPickedOver = true;
-					}
-					else if (temp.overUnderPick.compareTo("UNDER") == 0) {
+					} else if (temp.overUnderPick.compareTo("UNDER") == 0) {
 						matchup.cbsPickedUnder = true;
-					}
-					else {
+					} else {
 						matchup.cbsPickedOver = false;
 						matchup.cbsPickedUnder = false;
 					}
@@ -222,8 +217,7 @@ public class CBBMatchup {
 							- ((int) (matchup.oddsSharkAwayScore * 10)) + ((int) (matchup.homeSpread * 10)))) / 10;
 					if (matchup.oddsSharkTotalScore > matchup.overUnder) {
 						matchup.oddsSharkLikesOver = true;
-					}
-					else if (matchup.oddsSharkTotalScore < matchup.overUnder) {
+					} else if (matchup.oddsSharkTotalScore < matchup.overUnder) {
 						matchup.oddsSharkLikesUnder = true;
 					}
 					oddsSharkCBBMatchups.remove(i);
@@ -243,8 +237,7 @@ public class CBBMatchup {
 							- ((int) (matchup.oddsSharkAwayScore * 10)) + ((int) (matchup.homeSpread * 10)))) / 10;
 					if (matchup.oddsSharkTotalScore > matchup.overUnder) {
 						matchup.oddsSharkLikesOver = true;
-					}
-					else if (matchup.oddsSharkTotalScore < matchup.overUnder) {
+					} else if (matchup.oddsSharkTotalScore < matchup.overUnder) {
 						matchup.oddsSharkLikesUnder = true;
 					}
 					oddsSharkCBBMatchups.remove(i);
@@ -279,11 +272,9 @@ public class CBBMatchup {
 				espnTeams.add(teamArr[3]);
 			}
 			scanner.close();
-		}
-		catch (FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 			System.out.println("Error reading team names from file.");
-		}
-		finally {
+		} finally {
 			if (scanner != null) {
 				scanner.close();
 			}
