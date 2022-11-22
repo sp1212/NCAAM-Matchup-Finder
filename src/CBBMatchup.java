@@ -253,10 +253,10 @@ public class CBBMatchup {
 	// various sources
 	public static ArrayList<ArrayList<String>> ingestTeamNames() {
 		ArrayList<ArrayList<String>> sources = new ArrayList<ArrayList<String>>(4);
-		ArrayList<String> coversTeams = new ArrayList<String>(358);
-		ArrayList<String> cbsTeams = new ArrayList<String>(358);
-		ArrayList<String> oddsSharkTeams = new ArrayList<String>(358);
-		ArrayList<String> espnTeams = new ArrayList<String>(358);
+		ArrayList<String> coversTeams = new ArrayList<String>(363);
+		ArrayList<String> cbsTeams = new ArrayList<String>(363);
+		ArrayList<String> oddsSharkTeams = new ArrayList<String>(363);
+		ArrayList<String> espnTeams = new ArrayList<String>(363);
 
 		Scanner scanner = null;
 		try {
