@@ -230,6 +230,9 @@ public class HTMLFormat {
 			}
 
 			htmlString += bottomHtml;
+			
+			htmlString = htmlString.replace("<!-- START -->", "");
+			htmlString = htmlString.replace("<!-- END -->", "");
 
 			File newHtmlFile = new File("outputfile.html");
 			FileUtils.writeStringToFile(newHtmlFile, htmlString, StandardCharsets.UTF_8);
