@@ -78,6 +78,78 @@ public class HTMLFormat {
 				matchupCard = matchupCard.replace("$homeHexColor", matchup.homeHexColor);
 				matchupCard = matchupCard.replace("$matchupUrlIndex", matchup.coversMatchupUrlIndex);
 				matchupCard = matchupCard.replace("$espnMatchupUrl", matchup.espnMatchup.matchupUrl);
+				
+				matchupCard = matchupCard.replace("$ad1", matchup.awayPastGames.get(0).date);
+				matchupCard = matchupCard.replace("$ad2", matchup.awayPastGames.get(1).date);
+				matchupCard = matchupCard.replace("$ad3", matchup.awayPastGames.get(2).date);
+				matchupCard = matchupCard.replace("$ad4", matchup.awayPastGames.get(3).date);
+				matchupCard = matchupCard.replace("$ad5", matchup.awayPastGames.get(4).date);
+				
+				matchupCard = matchupCard.replace("$ao1", matchup.awayPastGames.get(0).team);
+				matchupCard = matchupCard.replace("$ao2", matchup.awayPastGames.get(1).team);
+				matchupCard = matchupCard.replace("$ao3", matchup.awayPastGames.get(2).team);
+				matchupCard = matchupCard.replace("$ao4", matchup.awayPastGames.get(3).team);
+				matchupCard = matchupCard.replace("$ao5", matchup.awayPastGames.get(4).team);
+				
+				matchupCard = matchupCard.replace("$ar1", matchup.awayPastGames.get(0).scoreString);
+				matchupCard = matchupCard.replace("$ar2", matchup.awayPastGames.get(1).scoreString);
+				matchupCard = matchupCard.replace("$ar3", matchup.awayPastGames.get(2).scoreString);
+				matchupCard = matchupCard.replace("$ar4", matchup.awayPastGames.get(3).scoreString);
+				matchupCard = matchupCard.replace("$ar5", matchup.awayPastGames.get(4).scoreString);
+				
+				matchupCard = matchupCard.replace("$aats1", matchup.awayPastGames.get(0).atsMargin);
+				matchupCard = matchupCard.replace("$aats2", matchup.awayPastGames.get(1).atsMargin);
+				matchupCard = matchupCard.replace("$aats3", matchup.awayPastGames.get(2).atsMargin);
+				matchupCard = matchupCard.replace("$aats4", matchup.awayPastGames.get(3).atsMargin);
+				matchupCard = matchupCard.replace("$aats5", matchup.awayPastGames.get(4).atsMargin);
+				
+				matchupCard = matchupCard.replace("$aou1", matchup.awayPastGames.get(0).ouMargin);
+				matchupCard = matchupCard.replace("$aou2", matchup.awayPastGames.get(1).ouMargin);
+				matchupCard = matchupCard.replace("$aou3", matchup.awayPastGames.get(2).ouMargin);
+				matchupCard = matchupCard.replace("$aou4", matchup.awayPastGames.get(3).ouMargin);
+				matchupCard = matchupCard.replace("$aou5", matchup.awayPastGames.get(4).ouMargin);
+				
+				matchupCard = matchupCard.replace("$ap1", Integer.toString(matchup.awayPastGames.get(0).totalPoints));
+				matchupCard = matchupCard.replace("$ap2", Integer.toString(matchup.awayPastGames.get(1).totalPoints));
+				matchupCard = matchupCard.replace("$ap3", Integer.toString(matchup.awayPastGames.get(2).totalPoints));
+				matchupCard = matchupCard.replace("$ap4", Integer.toString(matchup.awayPastGames.get(3).totalPoints));
+				matchupCard = matchupCard.replace("$ap5", Integer.toString(matchup.awayPastGames.get(4).totalPoints));
+				
+				matchupCard = matchupCard.replace("$hd1", matchup.homePastGames.get(0).date);
+				matchupCard = matchupCard.replace("$hd2", matchup.homePastGames.get(1).date);
+				matchupCard = matchupCard.replace("$hd3", matchup.homePastGames.get(2).date);
+				matchupCard = matchupCard.replace("$hd4", matchup.homePastGames.get(3).date);
+				matchupCard = matchupCard.replace("$hd5", matchup.homePastGames.get(4).date);
+				
+				matchupCard = matchupCard.replace("$ho1", matchup.homePastGames.get(0).team);
+				matchupCard = matchupCard.replace("$ho2", matchup.homePastGames.get(1).team);
+				matchupCard = matchupCard.replace("$ho3", matchup.homePastGames.get(2).team);
+				matchupCard = matchupCard.replace("$ho4", matchup.homePastGames.get(3).team);
+				matchupCard = matchupCard.replace("$ho5", matchup.homePastGames.get(4).team);
+				
+				matchupCard = matchupCard.replace("$hr1", matchup.homePastGames.get(0).scoreString);
+				matchupCard = matchupCard.replace("$hr2", matchup.homePastGames.get(1).scoreString);
+				matchupCard = matchupCard.replace("$hr3", matchup.homePastGames.get(2).scoreString);
+				matchupCard = matchupCard.replace("$hr4", matchup.homePastGames.get(3).scoreString);
+				matchupCard = matchupCard.replace("$hr5", matchup.homePastGames.get(4).scoreString);
+				
+				matchupCard = matchupCard.replace("$hats1", matchup.homePastGames.get(0).atsMargin);
+				matchupCard = matchupCard.replace("$hats2", matchup.homePastGames.get(1).atsMargin);
+				matchupCard = matchupCard.replace("$hats3", matchup.homePastGames.get(2).atsMargin);
+				matchupCard = matchupCard.replace("$hats4", matchup.homePastGames.get(3).atsMargin);
+				matchupCard = matchupCard.replace("$hats5", matchup.homePastGames.get(4).atsMargin);
+				
+				matchupCard = matchupCard.replace("$hou1", matchup.homePastGames.get(0).ouMargin);
+				matchupCard = matchupCard.replace("$hou2", matchup.homePastGames.get(1).ouMargin);
+				matchupCard = matchupCard.replace("$hou3", matchup.homePastGames.get(2).ouMargin);
+				matchupCard = matchupCard.replace("$hou4", matchup.homePastGames.get(3).ouMargin);
+				matchupCard = matchupCard.replace("$hou5", matchup.homePastGames.get(4).ouMargin);
+				
+				matchupCard = matchupCard.replace("$hp1", Integer.toString(matchup.homePastGames.get(0).totalPoints));
+				matchupCard = matchupCard.replace("$hp2", Integer.toString(matchup.homePastGames.get(1).totalPoints));
+				matchupCard = matchupCard.replace("$hp3", Integer.toString(matchup.homePastGames.get(2).totalPoints));
+				matchupCard = matchupCard.replace("$hp4", Integer.toString(matchup.homePastGames.get(3).totalPoints));
+				matchupCard = matchupCard.replace("$hp5", Integer.toString(matchup.homePastGames.get(4).totalPoints));
 
 				if (matchup.oddsSharkLikesOver == true) {
 					matchupCard = matchupCard.replace(" $oddsSharkUnderAnimated", "");

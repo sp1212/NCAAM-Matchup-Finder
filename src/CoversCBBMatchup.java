@@ -2,7 +2,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -22,6 +21,8 @@ public class CoversCBBMatchup {
 	public boolean isNeutral;
 	public String matchupUrlIndex;
 	public LocalTime gameTime;
+	public ArrayList<PastGame> awayPastGames;
+	public ArrayList<PastGame> homePastGames;
 
 	// default constructor
 	public CoversCBBMatchup() {
@@ -115,8 +116,7 @@ public class CoversCBBMatchup {
 						matchup.homeSpread = Double.parseDouble(homeSpreadString);
 						if (matchup.homeSpread == 0) {
 							matchup.awaySpread = 0;
-						}
-						else {
+						} else {
 							matchup.awaySpread = matchup.homeSpread * -1;
 						}
 						matchup.homeConsensus = Integer.parseInt(pickCovers.select("div.cmg_matchup_list_column_3")
@@ -141,17 +141,74 @@ public class CoversCBBMatchup {
 										.select("div.covers-CoversConsensusDetailsTable-sideHeadRight").get(1).text()
 										.replaceAll("[^0-9]", ""));
 							}
-						}
-						catch (IOException e) {
+						} catch (IOException e) {
 							System.out.println("IOException in try/catch block! #Covers1");
+							System.out.println();
+						}
+
+						// open the covers matchup page
+						try {
+							String matchupUrl = "https://www.covers.com/" + pickCovers
+									.select("a[href^=/sport/basketball/ncaab/matchup/]:contains(Matchup)").attr("href");
+							Connection conCoversMatchup = Jsoup.connect(matchupUrl);
+							Document docCoversMatchup = conCoversMatchup.get();
+							
+							if (conCoversMatchup.response().statusCode() == 200) {
+								Elements bothTables = docCoversMatchup.select("table.covers-CoversMatchups-Table:contains(L 10 |)");
+								Element awayTable = bothTables.get(0);
+								Element homeTable = bothTables.get(1);
+								
+								ArrayList<PastGame> awayPastGames = new ArrayList<PastGame>(5);
+								ArrayList<PastGame> homePastGames = new ArrayList<PastGame>(5);
+								
+								for (int i = 0; i < 5; i++) {
+									PastGame game = new PastGame();
+									Element entry = awayTable.select("tbody > tr").get(i);
+									
+									game.team = entry.select("td").get(1).text();
+									game.logoUrl = "https://img.covers.com/covers/data/new_logos/ncaab/" + game.team.replaceAll("N| |-|@", "").toLowerCase() + ".png";
+									game.date = entry.select("td").get(0).text();
+									game.scoreString = entry.select("td").get(2).text();
+									game.atsMargin = entry.select("td").get(5).text();
+									game.ouMargin = entry.select("td").get(7).text();
+									
+									String temp = game.scoreString.replaceAll("[WL(OT)]", "");
+									int op1 = Integer.parseInt(temp.substring(0, temp.indexOf("-")).replaceAll(" |-", ""));
+									int op2 = Integer.parseInt(temp.substring(temp.indexOf("-")).replaceAll(" |-", ""));
+									game.totalPoints = op1 + op2;
+									
+									awayPastGames.add(game);
+								}
+								matchup.awayPastGames = awayPastGames;
+								for (int i = 0; i < 5; i++) {
+									PastGame game = new PastGame();
+									Element entry = homeTable.select("tbody > tr").get(i);
+									
+									game.team = entry.select("td").get(1).text();
+									game.logoUrl = "https://img.covers.com/covers/data/new_logos/ncaab/" + game.team.replaceAll("N| |-|@", "").toLowerCase() + ".png";
+									game.date = entry.select("td").get(0).text();
+									game.scoreString = entry.select("td").get(2).text();
+									game.atsMargin = entry.select("td").get(5).text();
+									game.ouMargin = entry.select("td").get(7).text();
+									
+									String temp = game.scoreString.replaceAll("[WL(OT)]", "");
+									int op1 = Integer.parseInt(temp.substring(0, temp.indexOf("-")).replaceAll(" |-", ""));
+									int op2 = Integer.parseInt(temp.substring(temp.indexOf("-")).replaceAll(" |-", ""));
+									game.totalPoints = op1 + op2;
+									
+									homePastGames.add(game);
+								}
+								matchup.homePastGames = homePastGames;
+							}
+						} catch (IOException e) {
+							System.out.println("IOException in try/catch block! #Covers2");
 							System.out.println();
 						}
 
 						if (pickCovers.select("span.covers-CoversScoreboards-neutralSiteMarker").text()
 								.compareTo("NEUTRAL") == 0) {
 							matchup.isNeutral = true;
-						}
-						else {
+						} else {
 							matchup.isNeutral = false;
 						}
 						matchup.gameTime = TimeConversion
@@ -160,9 +217,8 @@ public class CoversCBBMatchup {
 					}
 				}
 			}
-		}
-		catch (IOException e) {
-			System.out.println("IOException in try/catch block! #Covers2");
+		} catch (IOException e) {
+			System.out.println("IOException in try/catch block! #Covers3");
 		}
 
 		return coversCBBMatchups;

@@ -18,6 +18,8 @@ public class CBBMatchup {
 	public int overConsensus;
 	public int underConsensus;
 	public String coversMatchupUrlIndex;
+	public ArrayList<PastGame> awayPastGames;
+	public ArrayList<PastGame> homePastGames;
 
 	public double awayWinChance;
 	public double homeWinChance;
@@ -115,6 +117,9 @@ public class CBBMatchup {
 			matchup.underConsensus = coversMatchup.underConsensus;
 			matchup.isNeutralSite = coversMatchup.isNeutral;
 			matchup.gameTime = coversMatchup.gameTime;
+			
+			matchup.awayPastGames = coversMatchup.awayPastGames;
+			matchup.homePastGames = coversMatchup.homePastGames;
 
 			matchup.awayTeamIndex = coversTeams.indexOf(matchup.awayTeam);
 			matchup.homeTeamIndex = coversTeams.indexOf(matchup.homeTeam);
