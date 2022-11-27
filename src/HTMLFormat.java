@@ -263,17 +263,17 @@ public class HTMLFormat {
 				}
 
 				if (matchup.awaySpread > 0) {
-					matchupCard = matchupCard.replace("$awaySpread", "+" + Double.toString(matchup.awaySpread));
+					matchupCard = matchupCard.replace("$aSpread", "+" + Double.toString(matchup.awaySpread));
 				}
 				else {
-					matchupCard = matchupCard.replace("$awaySpread", Double.toString(matchup.awaySpread));
+					matchupCard = matchupCard.replace("$aSpread", Double.toString(matchup.awaySpread));
 				}
 
 				if (matchup.homeSpread > 0) {
-					matchupCard = matchupCard.replace("$homeSpread", "+" + Double.toString(matchup.homeSpread));
+					matchupCard = matchupCard.replace("$hSpread", "+" + Double.toString(matchup.homeSpread));
 				}
 				else {
-					matchupCard = matchupCard.replace("$homeSpread", Double.toString(matchup.homeSpread));
+					matchupCard = matchupCard.replace("$hSpread", Double.toString(matchup.homeSpread));
 				}
 
 				if (matchup.isNeutralSite == true) {
@@ -286,16 +286,16 @@ public class HTMLFormat {
 				}
 				
 				if (matchup.awayRank > 0) {
-					matchupCard = matchupCard.replace("$awayRank", "<small>" + matchup.awayRank + " </small>");
+					matchupCard = matchupCard.replace("$aRank", "<small>" + matchup.awayRank + " </small>");
 				}
 				else {
-					matchupCard = matchupCard.replace("$awayRank", "");
+					matchupCard = matchupCard.replace("$aRank", "");
 				}
 				if (matchup.homeRank > 0) {
-					matchupCard = matchupCard.replace("$homeRank", "<small>" + matchup.homeRank + " </small>");
+					matchupCard = matchupCard.replace("$hRank", "<small>" + matchup.homeRank + " </small>");
 				}
 				else {
-					matchupCard = matchupCard.replace("$homeRank", "");
+					matchupCard = matchupCard.replace("$hRank", "");
 				}
 				
 				htmlString += matchupCard;
