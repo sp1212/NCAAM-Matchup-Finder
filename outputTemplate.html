@@ -100,6 +100,53 @@
   nav ul li a:hover {
     color: #555;
   }
+
+  .buttonIcon {
+    height: 16px;
+    width: 16px;
+  }
+
+  .innerSortButton {
+    width: 12%;
+    border-radius: 0 !important;
+  }
+
+  .trSortButton {
+    width: 12%;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
+  .tlSortButton {
+    width: 12%;
+    border-bottom-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
+  .brSortButton {
+    width: 12%;
+    border-bottom-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+  }
+
+  .blSortButton {
+    width: 12%;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
+  .navButton {
+    border-color: transparent;
+  }
+
+  .sortBtnGroup {
+    justify-content: center;
+    display: flex
+  }
 </style>
 
 <body class="bg-secondary">
@@ -126,9 +173,9 @@
           </li>
 
           <li class="nav-item me-2">
-            <a role="button" class="btn btn-outline-light" href="https://www.covers.com/sports/ncaab/matchups"
-              target="_blank" style="border-color: transparent">
-              <img src="https://img.covers.com/covers/favicon_new.ico" style="height: 16px; width: 16px;" />
+            <a role="button" class="btn btn-outline-light navButton" href="https://www.covers.com/sports/ncaab/matchups"
+              target="_blank">
+              <img class="buttonIcon" src="https://img.covers.com/covers/favicon_new.ico" />
               Covers
             </a>
           </li>
@@ -137,10 +184,9 @@
             <hr class="dropdown-divider d-xl-none">
           </div>
           <li class="nav-item me-2">
-            <a role="button" class="btn btn-outline-light" href="https://www.oddsshark.com/ncaab/computer-picks"
-              target="_blank" style="border-color: transparent">
-              <img src="https://www.oddsshark.com/themes/custom/os/favicon-16x16.png"
-                style="height: 16px; width: 16px;" />
+            <a role="button" class="btn btn-outline-light navButton"
+              href="https://www.oddsshark.com/ncaab/computer-picks" target="_blank">
+              <img class="buttonIcon" src="https://www.oddsshark.com/themes/custom/os/favicon-16x16.png" />
               Odds Shark
             </a>
           </li>
@@ -149,10 +195,9 @@
             <hr class="dropdown-divider d-xl-none">
           </div>
           <li class="nav-item me-2">
-            <a role="button" class="btn btn-outline-light"
-              href="https://www.cbssports.com/college-basketball/expert-picks/" target="_blank"
-              style="border-color: transparent">
-              <img src="https://www.cbssports.com/favicon-16x16.png" style="height: 16px; width: 16px;" />
+            <a role="button" class="btn btn-outline-light navButton"
+              href="https://www.cbssports.com/college-basketball/expert-picks/" target="_blank">
+              <img class="buttonIcon" src="https://www.cbssports.com/favicon-16x16.png" />
               CBS
             </a>
           </li>
@@ -161,10 +206,9 @@
             <hr class="dropdown-divider d-xl-none">
           </div>
           <li class="nav-item me-2">
-            <a role="button" class="btn btn-outline-light"
-              href="https://www.espn.com/mens-college-basketball/schedule/_/group/50" target="_blank"
-              style="border-color: transparent">
-              <img src="https://a.espncdn.com/favicon.ico" style="height: 16px; width: 16px;" />
+            <a role="button" class="btn btn-outline-light navButton"
+              href="https://www.espn.com/mens-college-basketball/schedule/_/group/50" target="_blank">
+              <img class="buttonIcon" src="https://a.espncdn.com/favicon.ico" />
               ESPN
             </a>
           </li>
@@ -173,9 +217,9 @@
             <hr class="dropdown-divider d-xl-none">
           </div>
           <li class="nav-item me-2">
-            <a role="button" class="btn btn-outline-light" href="https://www.pickswise.com/college-basketball/"
-              target="_blank" style="border-color: transparent">
-              <img src="https://www.pickswise.com/logos/favicon-16x16.png" style="height: 16px; width: 16px;" />
+            <a role="button" class="btn btn-outline-light navButton"
+              href="https://www.pickswise.com/college-basketball/" target="_blank">
+              <img class="buttonIcon" src="https://www.pickswise.com/logos/favicon-16x16.png" />
               Pickswise
             </a>
           </li>
@@ -184,9 +228,9 @@
             <hr class="dropdown-divider d-xl-none">
           </div>
           <li class="nav-item me-2">
-            <a role="button" class="btn btn-outline-light" href="https://kenpom.com/fanmatch.php"
-              target="_blank" style="border-color: transparent">
-              <img src="https://kenpom.com/assets/favicon.ico?1662440188" style="height: 16px; width: 16px;" />
+            <a role="button" class="btn btn-outline-light navButton" href="https://kenpom.com/fanmatch.php"
+              target="_blank">
+              <img class="buttonIcon" src="https://kenpom.com/assets/favicon.ico?1662440188" />
               KenPom
             </a>
           </li>
@@ -206,119 +250,108 @@
 
         <h4 style="text-align: center; padding-top: 12px;">$numMatchups found at $currentTime for $currentDate</h4>
 
-        <div class="btn-group-sm" role="group" style="justify-content: center; display: flex">
-          <button type="button"
-            style="width: 14%; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0;"
-            class="btn btn-outline-dark" id="spreadLargestSort">Spread
+        <div class="btn-group-sm sortBtnGroup" role="group">
+          <button type="button" class="btn btn-outline-dark tlSortButton" id="spreadLargestSort">Spread
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up"
               viewBox="0 0 16 16">
               <path fill-rule="evenodd"
                 d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
             </svg></button>
-          <button type="button" style="width: 14%; border-radius: 0" class="btn btn-outline-dark" id="espnHighSort"><img
-              src="https://a.espncdn.com/favicon.ico" style="height: 16px; width: 16px;" /> <svg
+          <button type="button" class="btn btn-outline-dark innerSortButton" id="espnHighSort"><img class="buttonIcon"
+              src="https://a.espncdn.com/favicon.ico" /> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+            </svg></button>
+          <button type="button" class="btn btn-outline-dark innerSortButton" id="coversAtsHighSort"><img
+              class="buttonIcon" src="https://img.covers.com/covers/favicon_new.ico" /> ATS
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up"
+              viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+            </svg></button>
+          <button type="button" class="btn btn-outline-dark innerSortButton" id="osAtsHighSort"><img class="buttonIcon"
+              src="https://www.oddsshark.com/themes/custom/os/favicon-16x16.png" /> ATS <svg
               xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up"
               viewBox="0 0 16 16">
               <path fill-rule="evenodd"
                 d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
             </svg></button>
-          <button type="button" style="width: 14%; border-radius: 0" class="btn btn-outline-dark"
-            id="coversAtsHighSort"><img src="https://img.covers.com/covers/favicon_new.ico"
-              style="height: 16px; width: 16px;" /> ATS <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-              fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
-              <path fill-rule="evenodd"
-                d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
-            </svg></button>
-          <button type="button" style="width: 14%; border-radius: 0" class="btn btn-outline-dark"
-            id="osAtsHighSort"><img src="https://www.oddsshark.com/themes/custom/os/favicon-16x16.png"
-              style="height: 16px; width: 16px;" /> ATS <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-              fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
-              <path fill-rule="evenodd"
-                d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
-            </svg></button>
-          <button type="button" style="width: 14%; border-radius: 0" class="btn btn-outline-dark"
-            id="overUnderHighestSort">O/U
+          <button type="button" class="btn btn-outline-dark innerSortButton" id="overUnderHighestSort">O/U
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up"
               viewBox="0 0 16 16">
               <path fill-rule="evenodd"
                 d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
             </svg></button>
-          <button type="button" style="width: 14%; border-radius: 0" class="btn btn-outline-dark"
-            id="coversOuHighSort"><img src="https://img.covers.com/covers/favicon_new.ico"
-              style="height: 16px; width: 16px;" /> O/U <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-              fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+          <button type="button" class="btn btn-outline-dark innerSortButton" id="coversOuHighSort"><img
+              class="buttonIcon" src="https://img.covers.com/covers/favicon_new.ico" /> O/U
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up"
+              viewBox="0 0 16 16">
               <path fill-rule="evenodd"
                 d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
             </svg></button>
-          <button type="button" style="width: 14%; border-radius: 0;" class="btn btn-outline-dark"
-            id="osOuHighSort"><img src="https://www.oddsshark.com/themes/custom/os/favicon-16x16.png"
-              style="height: 16px; width: 16px;" /> O/U <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-              fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+          <button type="button" class="btn btn-outline-dark innerSortButton" id="osOuHighSort"><img class="buttonIcon"
+              src="https://www.oddsshark.com/themes/custom/os/favicon-16x16.png" /> O/U <svg
+              xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up"
+              viewBox="0 0 16 16">
               <path fill-rule="evenodd"
                 d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
             </svg></button>
-          <button type="button"
-            style="width: 14%; border-top-left-radius: 0; border-bottom-left-radius: 0; border-bottom-right-radius: 0;"
-            class="btn btn-outline-dark" id="timeEarliestSort">Time
+          <button type="button" class="btn btn-outline-dark trSortButton" id="timeEarliestSort">Time
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up"
               viewBox="0 0 16 16">
               <path fill-rule="evenodd"
                 d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
             </svg></button>
         </div>
-        <div class="btn-group-sm" role="group" style="justify-content: center; display: flex">
-          <button type="button"
-            style="width: 14%; border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0;"
-            class="btn btn-outline-dark" id="spreadSmallestSort">Spread
+        <div class="btn-group-sm sortBtnGroup" role="group">
+          <button type="button" class="btn btn-outline-dark blSortButton" id="spreadSmallestSort">Spread
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down"
               viewBox="0 0 16 16">
               <path fill-rule="evenodd"
                 d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
             </svg></button>
-          <button type="button" style="width: 14%; border-radius: 0" class="btn btn-outline-dark" id="espnLowSort"><img
-              src="https://a.espncdn.com/favicon.ico" style="height: 16px; width: 16px;" /> <svg
-              xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down"
-              viewBox="0 0 16 16">
-              <path fill-rule="evenodd"
-                d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
-            </svg></button>
-          <button type="button" style="width: 14%; border-radius: 0;" class="btn btn-outline-dark"
-            id="coversAtsLowSort"><img src="https://img.covers.com/covers/favicon_new.ico"
-              style="height: 16px; width: 16px;" /> ATS <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+          <button type="button" class="btn btn-outline-dark innerSortButton" id="espnLowSort"><img class="buttonIcon"
+              src="https://a.espncdn.com/favicon.ico" /> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
               fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
               <path fill-rule="evenodd"
                 d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
             </svg></button>
-          <button type="button" style="width: 14%; border-radius: 0" class="btn btn-outline-dark" id="osAtsLowSort"><img
-              src="https://www.oddsshark.com/themes/custom/os/favicon-16x16.png" style="height: 16px; width: 16px;" />
+          <button type="button" class="btn btn-outline-dark innerSortButton" id="coversAtsLowSort"><img
+              class="buttonIcon" src="https://img.covers.com/covers/favicon_new.ico" /> ATS
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down"
+              viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
+            </svg></button>
+          <button type="button" class="btn btn-outline-dark innerSortButton" id="osAtsLowSort"><img class="buttonIcon"
+              src="https://www.oddsshark.com/themes/custom/os/favicon-16x16.png" />
             ATS <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
               class="bi bi-arrow-down" viewBox="0 0 16 16">
               <path fill-rule="evenodd"
                 d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
             </svg></button>
-          <button type="button" style="width: 14%; border-radius: 0" class="btn btn-outline-dark"
-            id="overUnderLowestSort">O/U <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-              fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+          <button type="button" class="btn btn-outline-dark innerSortButton" id="overUnderLowestSort">O/U <svg
+              xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down"
+              viewBox="0 0 16 16">
               <path fill-rule="evenodd"
                 d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
             </svg></button>
-          <button type="button" style="width: 14%; border-radius: 0" class="btn btn-outline-dark"
-            id="coversOuLowSort"><img src="https://img.covers.com/covers/favicon_new.ico"
-              style="height: 16px; width: 16px;" /> O/U <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-              fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+          <button type="button" class="btn btn-outline-dark innerSortButton" id="coversOuLowSort"><img
+              class="buttonIcon" src="https://img.covers.com/covers/favicon_new.ico" /> O/U <svg
+              xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down"
+              viewBox="0 0 16 16">
               <path fill-rule="evenodd"
                 d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
             </svg></button>
-          <button type="button" style="width: 14%; border-radius: 0;" class="btn btn-outline-dark" id="osOuLowSort"><img
-              src="https://www.oddsshark.com/themes/custom/os/favicon-16x16.png" style="height: 16px; width: 16px;" />
+          <button type="button" class="btn btn-outline-dark innerSortButton" id="osOuLowSort"><img class="buttonIcon"
+              src="https://www.oddsshark.com/themes/custom/os/favicon-16x16.png" />
             O/U <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
               class="bi bi-arrow-down" viewBox="0 0 16 16">
               <path fill-rule="evenodd"
                 d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
             </svg></button>
-          <button type="button"
-            style="width: 14%; border-bottom-left-radius: 0; border-top-right-radius: 0; border-top-left-radius: 0;"
-            class="btn btn-outline-dark" id="timeLatestSort">Time
+          <button type="button" class="btn btn-outline-dark brSortButton" id="timeLatestSort">Time
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down"
               viewBox="0 0 16 16">
               <path fill-rule="evenodd"
@@ -326,9 +359,9 @@
             </svg></button>
         </div>
         <div style="display: flex; justify-content: center; text-align: center;">
-          <a class="btn btn-outline-dark btn-sm" style="text-decoration: none; margin: 8px;" id="removeOldButton">Remove Old Matchups <svg
-              xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-history"
-              viewBox="0 0 16 16">
+          <a class="btn btn-outline-dark btn-sm" style="text-decoration: none; margin: 8px;" id="removeOldButton">Remove
+            Old Matchups <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-clock-history" viewBox="0 0 16 16">
               <path
                 d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z" />
               <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z" />
@@ -349,7 +382,7 @@
           <div class="card shadow">
             <div class="card-header">
               <div class="row">
-                <div class="col-5" style="text-align: center;">
+                <div class="col-5  text-center">
                   <div class="row">
                     <div class="col-3" style="display: block; margin: auto;">
                       <img style="width: 100%; height: 100%;" loading="lazy"
@@ -363,12 +396,12 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-2" style="background-color: $neutralColor; text-align: center;">
+                <div class="col-2  text-center" style="background-color: $neutralColor;">
                   <div>$atVs</div>
                   <div class="gametime">$gameTime</div>
                   <div class="OU">O/U: $ovUn</div>
                 </div>
-                <div class="col-5" style="text-align: center;">
+                <div class="col-5 text-center">
                   <div class="row">
                     <div class="col-9">
                       <div>$hRank$homeTeamAbbr</div>
@@ -393,212 +426,161 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-2">
-                  <div style="text-align: center;">
-                    <a href="$espnMatchupUrl" target="_blank" style="text-decoration: none;">ESPN</a>
-                  </div>
+                <div class="col-2 text-center">
+                  <a href="$espnMatchupUrl" target="_blank" style="text-decoration: none;">ESPN</a>
                 </div>
                 <div class="col-5" style="display: block; margin: auto;">
-                  <div>
-                    <div class="progress" style="height: 12px;">
-                      <div class="progress-bar espn-home-win-chance" role="progressbar"
-                        style="width: $homeWinChance%; background-color: #$homeHexColor !important;"
-                        aria-valuenow="$homeWinChance" aria-valuemin="0" aria-valuemax="100">$homeWinChance%</div>
-                    </div>
+                  <div class="progress" style="height: 12px;">
+                    <div class="progress-bar espn-home-win-chance" role="progressbar"
+                      style="width: $homeWinChance%; background-color: #$homeHexColor !important;"
+                      aria-valuenow="$homeWinChance" aria-valuemin="0" aria-valuemax="100">$homeWinChance%</div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="card-body">
               <div class="row">
-                <div class="col-5" style="text-align: center;">
-                  <div><small>$awayTeamAbbr $aSpread</small></div>
+                <div class="col-5 text-center">
+                  <small>$awayTeamAbbr $aSpread</small>
                 </div>
-                <div class="col" style="text-align: center;">
-                  <div>
-                    <h5>ATS</h5>
-                  </div>
+                <div class="col text-center">
+                  <h5>ATS</h5>
                 </div>
-                <div class="col-5" style="text-align: center;">
-                  <div><small>$homeTeamAbbr $hSpread</small></div>
+                <div class="col-5 text-center">
+                  <small>$homeTeamAbbr $hSpread</small>
                 </div>
               </div>
               <div class="row">
                 <div class="col-5" style="display: block; margin: auto;">
-                  <div>
-                    <div class="progress justify-content-end">
-                      <div class="progress-bar$awayCovBarAnimated" role="progressbar"
-                        style="width: $awayConsensus%; background-color: #$awayHexColor !important;"
-                        aria-valuenow="$awayConsensus" aria-valuemin="0" aria-valuemax="100">$awayConsensus%</div>
-                    </div>
+                  <div class="progress justify-content-end">
+                    <div class="progress-bar$awayCovBarAnimated" role="progressbar"
+                      style="width: $awayConsensus%; background-color: #$awayHexColor !important;"
+                      aria-valuenow="$awayConsensus" aria-valuemin="0" aria-valuemax="100">$awayConsensus%</div>
                   </div>
                 </div>
-                <div class="col-2">
-                  <div style="text-align: center;">
-                    <a href="https://www.covers.com/sport/basketball/ncaab/matchup/$matchupUrlIndex" target="_blank"
-                      style="text-decoration: none;">Covers</a>
-                  </div>
+                <div class="col-2 text-center">
+                  <a href="https://www.covers.com/sport/basketball/ncaab/matchup/$matchupUrlIndex" target="_blank"
+                    style="text-decoration: none;">Covers</a>
                 </div>
                 <div class="col-5" style="display: block; margin: auto;">
-                  <div>
-                    <div class="progress">
-                      <div class="progress-bar covers-home-consensus$homeCovBarAnimated" role="progressbar"
-                        style="width: $homeConsensus%; background-color: #$homeHexColor !important;"
-                        aria-valuenow="$homeConsensus" aria-valuemin="0" aria-valuemax="100">$homeConsensus%</div>
-                    </div>
+                  <div class="progress">
+                    <div class="progress-bar covers-home-consensus$homeCovBarAnimated" role="progressbar"
+                      style="width: $homeConsensus%; background-color: #$homeHexColor !important;"
+                      aria-valuenow="$homeConsensus" aria-valuemin="0" aria-valuemax="100">$homeConsensus%</div>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-5" style="display: block; margin: auto;">
-                  <div>
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                        style="width: $oddsSharkAwayCoverWidth%; background-color: #$awayHexColor !important;">Cover by
-                        $predictedAwayCover</div>
-                    </div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                      style="width: $oddsSharkAwayCoverWidth%; background-color: #$awayHexColor !important;">Cover by
+                      $predictedAwayCover</div>
                   </div>
                 </div>
-                <div class="col-2">
-                  <div style="text-align: center;">
-                    Odds Shark
-                  </div>
+                <div class="col-2 text-center">
+                  Odds Shark
                 </div>
                 <div class="col-5" style="display: block; margin: auto;">
-                  <div>
-                    <div class="progress">
-                      <div class="progress-bar os-home-ats progress-bar-striped progress-bar-animated"
-                        role="progressbar"
-                        style="width: $oddsSharkHomeCoverWidth%; background-color: #$homeHexColor !important;">Cover by
-                        $predictedHomeCover</div>
-                    </div>
+                  <div class="progress">
+                    <div class="progress-bar os-home-ats progress-bar-striped progress-bar-animated" role="progressbar"
+                      style="width: $oddsSharkHomeCoverWidth%; background-color: #$homeHexColor !important;">Cover by
+                      $predictedHomeCover</div>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-5" style="display: block; margin: auto;">
-                  <div>
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                        style="width: $cbsAwayPickWidth%; background-color: #$awayHexColor !important;">CBS Picked</div>
-                    </div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                      style="width: $cbsAwayPickWidth%; background-color: #$awayHexColor !important;">CBS Picked</div>
                   </div>
                 </div>
-                <div class="col-2">
-                  <div style="text-align: center;">
-                    CBS
-                  </div>
+                <div class="col-2 text-center">
+                  CBS
                 </div>
                 <div class="col-5" style="display: block; margin: auto;">
-                  <div>
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                        style="width: $cbsHomePickWidth%; background-color: #$homeHexColor !important;">CBS Picked</div>
-                    </div>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                      style="width: $cbsHomePickWidth%; background-color: #$homeHexColor !important;">CBS Picked</div>
                   </div>
                 </div>
               </div>
-              <div class="row">
+              <div class="row text-center">
                 <div class="col-5" style="display: block; margin: auto;">
-                  <div style="text-align: center;">
-                    $predictedAwayScore
-                  </div>
+                  $predictedAwayScore
                 </div>
-                <div class="col-2">
-                  <div style="text-align: center;">
-                    Predicted
-                  </div>
+                <div class="col-2 text-center">
+                  Predicted
                 </div>
-                <div class="col-5" style="display: block; margin: auto;">
-                  <div style="text-align: center;">
-                    $predictedHomeScore
-                  </div>
+                <div class="col-5 text-center" style="display: block; margin: auto;">
+                  $predictedHomeScore
                 </div>
               </div>
             </div>
             <div class="card-body">
               <div class="row">
-                <div class="col-5" style="text-align: center;">
-                  <div><small>O$ovUn</small></div>
+                <div class="col-5 text-center">
+                  <small>O$ovUn</small>
                 </div>
-                <div class="col" style="text-align: center;">
-                  <div>
-                    <h5>O/U</h5>
-                  </div>
+                <div class="col text-center">
+                  <h5>O/U</h5>
                 </div>
-                <div class="col-5" style="text-align: center;">
-                  <div><small>U$ovUn</small></div>
+                <div class="col-5 text-center">
+                  <small>U$ovUn</small>
                 </div>
               </div>
               <div class="row">
                 <div class="col-5" style="display: block; margin: auto;">
-                  <div>
-                    <div class="progress justify-content-end">
-                      <div class="progress-bar bg-danger $coversOverAnimated" role="progressbar"
-                        style="width: $overConsensus%;" aria-valuenow="$overConsensus" aria-valuemin="0"
-                        aria-valuemax="100">$overConsensus%</div>
-                    </div>
+                  <div class="progress justify-content-end">
+                    <div class="progress-bar bg-danger $coversOverAnimated" role="progressbar"
+                      style="width: $overConsensus%;" aria-valuenow="$overConsensus" aria-valuemin="0"
+                      aria-valuemax="100">$overConsensus%</div>
                   </div>
                 </div>
-                <div class="col-2">
-                  <div style="text-align: center;">
-                    <a href="https://www.covers.com/sport/basketball/ncaab/matchup/$matchupUrlIndex" target="_blank"
-                      style="text-decoration: none;">Covers</a>
-                  </div>
+                <div class="col-2 text-center">
+                  <a href="https://www.covers.com/sport/basketball/ncaab/matchup/$matchupUrlIndex" target="_blank"
+                    style="text-decoration: none;">Covers</a>
                 </div>
                 <div class="col-5" style="display: block; margin: auto;">
-                  <div>
-                    <div class="progress">
-                      <div class="progress-bar covers-under-consensus bg-primary $coversUnderAnimated"
-                        role="progressbar" style="width: $underConsensus%;" aria-valuenow="$underConsensus"
-                        aria-valuemin="0" aria-valuemax="100">$underConsensus%</div>
-                    </div>
+                  <div class="progress">
+                    <div class="progress-bar covers-under-consensus bg-primary $coversUnderAnimated" role="progressbar"
+                      style="width: $underConsensus%;" aria-valuenow="$underConsensus" aria-valuemin="0"
+                      aria-valuemax="100">$underConsensus%</div>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-5" style="display: block; margin: auto;">
-                  <div>
-                    <div class="progress justify-content-end">
-                      <div class="progress-bar os-over-by bg-danger $oddsSharkOverAnimated" role="progressbar"
-                        style="width: $oddsSharkOverWidth%;">$oddsSharkOverLabel</div>
-                    </div>
+                  <div class="progress justify-content-end">
+                    <div class="progress-bar os-over-by bg-danger $oddsSharkOverAnimated" role="progressbar"
+                      style="width: $oddsSharkOverWidth%;">$oddsSharkOverLabel</div>
                   </div>
                 </div>
-                <div class="col-2">
-                  <div style="text-align: center;">
-                    Odds Shark
-                  </div>
+                <div class="col-2 text-center">
+                  Odds Shark
                 </div>
                 <div class="col-5" style="display: block; margin: auto;">
-                  <div>
-                    <div class="progress">
-                      <div class="progress-bar os-under-by bg-primary $oddsSharkUnderAnimated" role="progressbar"
-                        style="width: $oddsSharkUnderWidth%;">$oddsSharkUnderLabel</div>
-                    </div>
+                  <div class="progress">
+                    <div class="progress-bar os-under-by bg-primary $oddsSharkUnderAnimated" role="progressbar"
+                      style="width: $oddsSharkUnderWidth%;">$oddsSharkUnderLabel</div>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-5" style="display: block; margin: auto;">
-                  <div>
-                    <div class="progress justify-content-end">
-                      <div class="progress-bar bg-danger $cbsOverAnimated" role="progressbar"
-                        style="width: $cbsOverWidth%;">$cbsOverLabel</div>
-                    </div>
+                  <div class="progress justify-content-end">
+                    <div class="progress-bar bg-danger $cbsOverAnimated" role="progressbar"
+                      style="width: $cbsOverWidth%;">$cbsOverLabel</div>
                   </div>
                 </div>
-                <div class="col-2">
-                  <div style="text-align: center;">
-                    CBS
-                  </div>
+                <div class="col-2 text-center">
+                  CBS
                 </div>
                 <div class="col-5" style="display: block; margin: auto;">
-                  <div>
-                    <div class="progress">
-                      <div class="progress-bar bg-primary $cbsUnderAnimated" role="progressbar"
-                        style="width: $cbsUnderWidth%;">$cbsUnderLabel</div>
-                    </div>
+                  <div class="progress">
+                    <div class="progress-bar bg-primary $cbsUnderAnimated" role="progressbar"
+                      style="width: $cbsUnderWidth%;">$cbsUnderLabel</div>
                   </div>
                 </div>
               </div>
@@ -609,7 +591,9 @@
                 <div class="accordion">
                   <div class="accordion-item">
                     <h2 class="accordion-header">
-                      <button class="accordion-button d-block text-center collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                      <button class="accordion-button d-block text-center collapsed" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
+                        aria-controls="flush-collapseOne">
                         Last 5
                       </button>
                     </h2>
@@ -619,9 +603,11 @@
                           <table class="table">
                             <thead>
                               <tr>
-                                <th scope="col"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
-                                  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                                </svg></th>
+                                <th scope="col"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                                    <path
+                                      d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                                  </svg></th>
                                 <th scope="col">Opp</th>
                                 <th scope="col">Result</th>
                                 <th scope="col">ATS</th>
@@ -677,9 +663,11 @@
                           <table class="table">
                             <thead>
                               <tr>
-                                <th scope="col"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
-                                  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                                </svg></th>
+                                <th scope="col"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                                    <path
+                                      d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                                  </svg></th>
                                 <th scope="col">Opp</th>
                                 <th scope="col">Result</th>
                                 <th scope="col">ATS</th>
