@@ -54,8 +54,8 @@ public class HTMLFormat {
 
 			for (CBBMatchup matchup : cbbMatchups) {
 				String matchupCard = middleHtml;
-				matchupCard = matchupCard.replace("$awayTeamAbbr", matchup.coversMatchup.awayTeam);
-				matchupCard = matchupCard.replace("$homeTeamAbbr", matchup.coversMatchup.homeTeam);
+				matchupCard = matchupCard.replace("$aTeamAbbr", matchup.coversMatchup.awayTeam);
+				matchupCard = matchupCard.replace("$hTeamAbbr", matchup.coversMatchup.homeTeam);
 				matchupCard = matchupCard.replace("$awayTeamFull", matchup.espnMatchup.awayTeam);
 				matchupCard = matchupCard.replace("$homeTeamFull", matchup.espnMatchup.homeTeam);
 				matchupCard = matchupCard.replace("$awayWinChance", Double.toString(matchup.awayWinChance));

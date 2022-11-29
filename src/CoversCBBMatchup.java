@@ -73,6 +73,7 @@ public class CoversCBBMatchup {
 
 		ArrayList<CoversCBBMatchup> coversCBBMatchups = new ArrayList<CoversCBBMatchup>();
 		String coversUrl = "https://www.covers.com/sports/ncaab/matchups?selectedDate=" + date;
+		
 		try {
 			Connection conCovers = Jsoup.connect(coversUrl);
 			Document docCovers = conCovers.get();
@@ -124,6 +125,14 @@ public class CoversCBBMatchup {
 						matchup.overUnder = Double.parseDouble(
 								pickCovers.select("div.cmg_team_live_odds").text().substring(11, 11 + pickCovers
 										.select("div.cmg_team_live_odds").text().substring(11).indexOf(" ")));
+						
+						ArrayList<PastGame> awayPastGames = new ArrayList<PastGame>(5);
+						ArrayList<PastGame> homePastGames = new ArrayList<PastGame>(5);
+						
+						for (int i = 0; i < 5; i++) {
+							awayPastGames.add(new PastGame());
+							homePastGames.add(new PastGame());
+						}
 
 						try {
 							// opening associated consensus page to get over/under consensus data
@@ -158,9 +167,6 @@ public class CoversCBBMatchup {
 								Element awayTable = bothTables.get(0);
 								Element homeTable = bothTables.get(1);
 								
-								ArrayList<PastGame> awayPastGames = new ArrayList<PastGame>(5);
-								ArrayList<PastGame> homePastGames = new ArrayList<PastGame>(5);
-								
 								for (int i = 0; i < 5; i++) {
 									PastGame game = new PastGame();
 									Element entry = awayTable.select("tbody > tr").get(i);
@@ -177,9 +183,8 @@ public class CoversCBBMatchup {
 									int op2 = Integer.parseInt(temp.substring(temp.indexOf("-")).replaceAll(" |-", ""));
 									game.totalPoints = op1 + op2;
 									
-									awayPastGames.add(game);
+									awayPastGames.set(i, game);
 								}
-								matchup.awayPastGames = awayPastGames;
 								for (int i = 0; i < 5; i++) {
 									PastGame game = new PastGame();
 									Element entry = homeTable.select("tbody > tr").get(i);
@@ -196,14 +201,15 @@ public class CoversCBBMatchup {
 									int op2 = Integer.parseInt(temp.substring(temp.indexOf("-")).replaceAll(" |-", ""));
 									game.totalPoints = op1 + op2;
 									
-									homePastGames.add(game);
+									homePastGames.set(i, game);
 								}
-								matchup.homePastGames = homePastGames;
 							}
 						} catch (IOException e) {
 							System.out.println("IOException in try/catch block! #Covers2");
 							System.out.println();
 						}
+						matchup.awayPastGames = awayPastGames;
+						matchup.homePastGames = homePastGames;
 
 						if (pickCovers.select("span.covers-CoversScoreboards-neutralSiteMarker").text()
 								.compareTo("NEUTRAL") == 0) {

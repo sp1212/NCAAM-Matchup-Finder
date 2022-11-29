@@ -390,7 +390,7 @@
                         onerror="if (this.src != 'https://img.covers.com/covers/matchups/no_team.jpg') this.src = 'https://img.covers.com/covers/matchups/no_team.jpg';">
                     </div>
                     <div class="col-9">
-                      <div>$aRank$awayTeamAbbr</div>
+                      <div>$aRank$aTeamAbbr</div>
                       <div>$awayTeamFull</div>
                       <div>$aSpread</div>
                     </div>
@@ -404,7 +404,7 @@
                 <div class="col-5 text-center">
                   <div class="row">
                     <div class="col-9">
-                      <div>$hRank$homeTeamAbbr</div>
+                      <div>$hRank$hTeamAbbr</div>
                       <div>$homeTeamFull</div>
                       <div class="home-spread">$hSpread</div>
                     </div>
@@ -441,13 +441,13 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-5 text-center">
-                  <small>$awayTeamAbbr $aSpread</small>
+                  <small>$aTeamAbbr $aSpread</small>
                 </div>
                 <div class="col text-center">
                   <h5>ATS</h5>
                 </div>
                 <div class="col-5 text-center">
-                  <small>$homeTeamAbbr $hSpread</small>
+                  <small>$hTeamAbbr $hSpread</small>
                 </div>
               </div>
               <div class="row">
@@ -592,12 +592,12 @@
                   <div class="accordion-item">
                     <h2 class="accordion-header">
                       <button class="accordion-button d-block text-center collapsed" type="button"
-                        data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
-                        aria-controls="flush-collapseOne">
+                        data-bs-toggle="collapse" data-bs-target="#l5-$aTeamAbbr-$hTeamAbbr" aria-expanded="false"
+                        aria-controls="l5-$aTeamAbbr-$hTeamAbbr">
                         Last 5
                       </button>
                     </h2>
-                    <div id="flush-collapseOne" class="accordion-collapse collapse">
+                    <div id="l5-$aTeamAbbr-$hTeamAbbr" class="accordion-collapse collapse">
                       <div class="row accordion-body">
                         <div class="col-6">
                           <table class="table">
