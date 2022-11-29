@@ -91,6 +91,12 @@ public class HTMLFormat {
 				matchupCard = matchupCard.replace("$ao4", matchup.awayPastGames.get(3).team);
 				matchupCard = matchupCard.replace("$ao5", matchup.awayPastGames.get(4).team);
 				
+				matchupCard = matchupCard.replace("$aurl1", matchup.awayPastGames.get(0).logoUrl);
+				matchupCard = matchupCard.replace("$aurl2", matchup.awayPastGames.get(1).logoUrl);
+				matchupCard = matchupCard.replace("$aurl3", matchup.awayPastGames.get(2).logoUrl);
+				matchupCard = matchupCard.replace("$aurl4", matchup.awayPastGames.get(3).logoUrl);
+				matchupCard = matchupCard.replace("$aurl5", matchup.awayPastGames.get(4).logoUrl);
+				
 				matchupCard = matchupCard.replace("$ar1", matchup.awayPastGames.get(0).scoreString);
 				matchupCard = matchupCard.replace("$ar2", matchup.awayPastGames.get(1).scoreString);
 				matchupCard = matchupCard.replace("$ar3", matchup.awayPastGames.get(2).scoreString);
@@ -126,6 +132,12 @@ public class HTMLFormat {
 				matchupCard = matchupCard.replace("$ho3", matchup.homePastGames.get(2).team);
 				matchupCard = matchupCard.replace("$ho4", matchup.homePastGames.get(3).team);
 				matchupCard = matchupCard.replace("$ho5", matchup.homePastGames.get(4).team);
+				
+				matchupCard = matchupCard.replace("$hurl1", matchup.homePastGames.get(0).logoUrl);
+				matchupCard = matchupCard.replace("$hurl2", matchup.homePastGames.get(1).logoUrl);
+				matchupCard = matchupCard.replace("$hurl3", matchup.homePastGames.get(2).logoUrl);
+				matchupCard = matchupCard.replace("$hurl4", matchup.homePastGames.get(3).logoUrl);
+				matchupCard = matchupCard.replace("$hurl5", matchup.homePastGames.get(4).logoUrl);
 				
 				matchupCard = matchupCard.replace("$hr1", matchup.homePastGames.get(0).scoreString);
 				matchupCard = matchupCard.replace("$hr2", matchup.homePastGames.get(1).scoreString);

@@ -2,6 +2,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -73,7 +75,7 @@ public class CoversCBBMatchup {
 
 		ArrayList<CoversCBBMatchup> coversCBBMatchups = new ArrayList<CoversCBBMatchup>();
 		String coversUrl = "https://www.covers.com/sports/ncaab/matchups?selectedDate=" + date;
-		
+
 		try {
 			Connection conCovers = Jsoup.connect(coversUrl);
 			Document docCovers = conCovers.get();
@@ -125,10 +127,10 @@ public class CoversCBBMatchup {
 						matchup.overUnder = Double.parseDouble(
 								pickCovers.select("div.cmg_team_live_odds").text().substring(11, 11 + pickCovers
 										.select("div.cmg_team_live_odds").text().substring(11).indexOf(" ")));
-						
+
 						ArrayList<PastGame> awayPastGames = new ArrayList<PastGame>(5);
 						ArrayList<PastGame> homePastGames = new ArrayList<PastGame>(5);
-						
+
 						for (int i = 0; i < 5; i++) {
 							awayPastGames.add(new PastGame());
 							homePastGames.add(new PastGame());
@@ -161,46 +163,51 @@ public class CoversCBBMatchup {
 									.select("a[href^=/sport/basketball/ncaab/matchup/]:contains(Matchup)").attr("href");
 							Connection conCoversMatchup = Jsoup.connect(matchupUrl);
 							Document docCoversMatchup = conCoversMatchup.get();
-							
+
 							if (conCoversMatchup.response().statusCode() == 200) {
-								Elements bothTables = docCoversMatchup.select("table.covers-CoversMatchups-Table:contains(L 10 |)");
+								Elements bothTables = docCoversMatchup
+										.select("table.covers-CoversMatchups-Table:contains(L 10 |)");
 								Element awayTable = bothTables.get(0);
 								Element homeTable = bothTables.get(1);
-								
+
 								for (int i = 0; i < 5; i++) {
 									PastGame game = new PastGame();
 									Element entry = awayTable.select("tbody > tr").get(i);
-									
+
 									game.team = entry.select("td").get(1).text();
-									game.logoUrl = "https://img.covers.com/covers/data/new_logos/ncaab/" + game.team.replaceAll("N| |-|@", "").toLowerCase() + ".png";
-									game.date = entry.select("td").get(0).text();
-									game.scoreString = entry.select("td").get(2).text();
+									game.logoUrl = "https://img.covers.com/covers/data/new_logos/ncaab/"
+											+ game.team.replaceAll("N| |-|@", "").toLowerCase() + ".png";
+									game.date = shortDate(entry.select("td").get(0).text());
+									game.scoreString = entry.select("td").get(2).text().replace(" - ", "-");
 									game.atsMargin = entry.select("td").get(5).text();
 									game.ouMargin = entry.select("td").get(7).text();
-									
+
 									String temp = game.scoreString.replaceAll("[WL(OT)]", "");
-									int op1 = Integer.parseInt(temp.substring(0, temp.indexOf("-")).replaceAll(" |-", ""));
+									int op1 = Integer
+											.parseInt(temp.substring(0, temp.indexOf("-")).replaceAll(" |-", ""));
 									int op2 = Integer.parseInt(temp.substring(temp.indexOf("-")).replaceAll(" |-", ""));
 									game.totalPoints = op1 + op2;
-									
+
 									awayPastGames.set(i, game);
 								}
 								for (int i = 0; i < 5; i++) {
 									PastGame game = new PastGame();
 									Element entry = homeTable.select("tbody > tr").get(i);
-									
+
 									game.team = entry.select("td").get(1).text();
-									game.logoUrl = "https://img.covers.com/covers/data/new_logos/ncaab/" + game.team.replaceAll("N| |-|@", "").toLowerCase() + ".png";
-									game.date = entry.select("td").get(0).text();
-									game.scoreString = entry.select("td").get(2).text();
+									game.logoUrl = "https://img.covers.com/covers/data/new_logos/ncaab/"
+											+ game.team.replaceAll("N| |-|@", "").toLowerCase() + ".png";
+									game.date = shortDate(entry.select("td").get(0).text());
+									game.scoreString = entry.select("td").get(2).text().replace(" - ", "-");
 									game.atsMargin = entry.select("td").get(5).text();
 									game.ouMargin = entry.select("td").get(7).text();
-									
+
 									String temp = game.scoreString.replaceAll("[WL(OT)]", "");
-									int op1 = Integer.parseInt(temp.substring(0, temp.indexOf("-")).replaceAll(" |-", ""));
+									int op1 = Integer
+											.parseInt(temp.substring(0, temp.indexOf("-")).replaceAll(" |-", ""));
 									int op2 = Integer.parseInt(temp.substring(temp.indexOf("-")).replaceAll(" |-", ""));
 									game.totalPoints = op1 + op2;
-									
+
 									homePastGames.set(i, game);
 								}
 							}
@@ -228,5 +235,13 @@ public class CoversCBBMatchup {
 		}
 
 		return coversCBBMatchups;
+	}
+
+	public static String shortDate(String input) {
+		if (!input.matches("^[A-Za-z]{3}[ ]{1}([0-9]{1}|[0-9]{2})[, ]{2}[0-9]{4}$"))
+			return "-";
+		String[] months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+		return (Arrays.asList(months).indexOf(input.substring(0, 3)) + 1) + "/"
+				+ input.substring(input.indexOf(" ") + 1, input.indexOf(","));
 	}
 }
