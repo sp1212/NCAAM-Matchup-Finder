@@ -76,8 +76,8 @@ public class ESPNCBBMatchup {
 
 						ESPNCBBMatchup espnMatchup = new ESPNCBBMatchup();
 						espnMatchup.matchupUrl = matchupUrl;
-						espnMatchup.awayTeam = docESPNMatchup.select("div.ScoreCell__TeamName").get(0).text();
-						espnMatchup.homeTeam = docESPNMatchup.select("div.ScoreCell__TeamName").get(1).text();
+						espnMatchup.awayTeam = docESPNMatchup.select("h2.ScoreCell__TeamName").get(0).text();
+						espnMatchup.homeTeam = docESPNMatchup.select("h2.ScoreCell__TeamName").get(1).text();
 
 						if (docESPNMatchup.select("div.matchupPredictor__innerContent").hasText()) {
 							espnMatchup.awayWinPercentage = Double.parseDouble(docESPNMatchup
